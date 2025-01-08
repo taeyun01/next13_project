@@ -21,6 +21,9 @@
       "@styles/*": ["src/styles/*"],
       "@pages/*": ["src/pages/*"],
       "@remote/*": ["src/remote/*"],
+      "@mock/*": ["src/mock/*"],
+      "@constants": ["src/constants/index"],
+      "@constants/*": ["src/constants/*"],
     },
     "jsxImportSource": "@emotion/react"
   },
