@@ -6,22 +6,24 @@ import { css } from '@emotion/react'
 
 //* 자산 관련 정보를 보여주는 컴포넌트
 const Account = () => {
-  const hasAccount = false
+  const hasAccount = true
 
   // 계좌가 있을 때
   if (hasAccount) {
     return (
-      <Flex justify="space-between" align="center">
-        <Flex direction="column" gap={2}>
-          <Text typography="t6" color="gray600">
-            새우깡 회원님의 자산
-          </Text>
-          <Text typography="t3" bold>
-            12,000원
-          </Text>
+      <div style={{ padding: '24px' }}>
+        <Flex justify="space-between" align="center">
+          <Flex direction="column" gap={2}>
+            <Text typography="t6" color="gray600">
+              새우깡 회원님의 자산
+            </Text>
+            <Text typography="t3" bold>
+              12,000원
+            </Text>
+          </Flex>
+          <Button>분석</Button>
         </Flex>
-        <Button>분석</Button>
-      </Flex>
+      </div>
     )
   }
 
