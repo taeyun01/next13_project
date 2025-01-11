@@ -13,7 +13,7 @@ const CreditScore = () => {
             나의 신용도를 증명하고 <br />
             점수를 올리세요
           </Text>
-          <Button>내 신용점수 보러가기</Button>
+          <Button color="basic">내 신용점수 보러가기</Button>
         </Flex>
         <CreditScoreChart width={80} height={80} score={500} />
       </Flex>

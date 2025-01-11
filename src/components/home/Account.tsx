@@ -6,7 +6,7 @@ import { css } from '@emotion/react'
 
 //* 자산 관련 정보를 보여주는 컴포넌트
 const Account = () => {
-  const hasAccount = true
+  const hasAccount = false
 
   // 계좌가 있을 때
   if (hasAccount) {
@@ -21,7 +21,7 @@ const Account = () => {
               12,000원
             </Text>
           </Flex>
-          <Button>분석</Button>
+          <Button color="basic">분석</Button>
         </Flex>
       </div>
     )
@@ -46,7 +46,7 @@ const Account = () => {
           <Text bold css={textStyles}>
             {title}
           </Text>
-          <Button>{buttonLabel}</Button>
+          <Button color="basic">{buttonLabel}</Button>
         </Flex>
         <Image
           src="https://cdn2.iconfinder.com/data/icons/flat-icons-19/512/Coin.png"
