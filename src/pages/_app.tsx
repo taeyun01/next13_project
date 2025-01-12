@@ -10,11 +10,11 @@ const queryClient = new QueryClient()
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Layout>
-        <Global styles={globalStyles} />
+    <Layout>
+      <Global styles={globalStyles} />
+      <QueryClientProvider client={queryClient}>
         <Component {...pageProps} />
-      </Layout>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </Layout>
   )
 }
