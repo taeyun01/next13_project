@@ -8,6 +8,7 @@ import {
   startAfter,
   limit,
   getDocs,
+  where,
 } from 'firebase/firestore'
 
 //* 전체 카드 리스트 조회
@@ -33,4 +34,23 @@ export const getCards = async (pageParam?: QuerySnapshot<Card>) => {
   }))
 
   return { items, lastVisible }
+}
+
+// 해당 키워드로 시작하는 카드들을 찾도록 간단하게 구현
+export const getSearchCards = async (keyword: string) => {
+  // 검색 쿼리
+  const searchQuery = query(
+    collection(store, COLLECTIONS.CARD),
+    where('name', '>=', keyword),
+    where('name', '<=', keyword + '\uf8ff'), // '\uf8ff') 이 유니코드 문자는 문자들 중에 가장 큰 값을 의미
+  ) //* //////////////////////////////////////  키워드로 시작하는 모든 카드들을 찾으라는 의미
+
+  const cardSnapshot = await getDocs(searchQuery)
+
+  const items = cardSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...(doc.data() as Card),
+  }))
+
+  return items
 }

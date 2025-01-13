@@ -5,7 +5,7 @@ const useCards = () => {
   const { data } = useQuery({
     queryKey: ['cards'],
     queryFn: () => getCards(),
-    suspense: false,
+    suspense: true,
   })
 
   return { data }

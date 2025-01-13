@@ -91,7 +91,19 @@ const ListRowTexts = ({
   )
 }
 
-const SkeletonListRow = () => {
+const SkeletonListRow = ({
+  titleWidth = 67,
+  titleHeight = 23,
+  subTitleWidth = 85,
+  subTitleHeight = 20,
+  withArrow = false,
+}: {
+  titleWidth?: number
+  titleHeight?: number
+  subTitleWidth?: number
+  subTitleHeight?: number
+  withArrow?: boolean
+}) => {
   return (
     <Flex as="li" css={listRowContainerStyles} align="center">
       <Flex css={listRowLeftStyles}></Flex>
@@ -99,14 +111,14 @@ const SkeletonListRow = () => {
         <ListRow.ListRowTexts
           title={
             <>
-              <Skeleton width={67} height={23} />
+              <Skeleton width={titleWidth} height={titleHeight} />
               <Spacing size={8} />
             </>
           }
-          subTitle={<Skeleton width={85} height={20} />}
+          subTitle={<Skeleton width={subTitleWidth} height={subTitleHeight} />}
         />
       </Flex>
-      <ArrowRightIcon />
+      {withArrow && <ArrowRightIcon />}
     </Flex>
   )
 }
