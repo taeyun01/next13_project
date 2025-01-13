@@ -64,22 +64,20 @@ const CardListPage = () => {
         scrollThreshold="100px"
       >
         <ul>
-          <ul>
-            {cards.map((card, idx) => (
-              <ListRow
-                key={card.id}
-                contents={
-                  <ListRow.ListRowTexts
-                    title={`${idx + 1}위`}
-                    subTitle={card.name}
-                  />
-                }
-                right={card.payback && <Badge label={card.payback} />}
-                withArrow
-                onClick={() => navigate.push(`/card/${card.id}`)}
-              />
-            ))}
-          </ul>
+          {cards.map((card, idx) => (
+            <ListRow
+              key={card.id}
+              contents={
+                <ListRow.ListRowTexts
+                  title={`${idx + 1}위`}
+                  subTitle={card.name}
+                />
+              }
+              right={card.payback && <Badge label={card.payback} />}
+              withArrow
+              onClick={() => navigate.push(`/card/${card.id}`)}
+            />
+          ))}
         </ul>
       </InfiniteScroll>
     </div>
