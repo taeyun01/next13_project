@@ -19,7 +19,7 @@ const Badge = ({ label }: BadgeProps) => {
 const Container = styled.div`
   padding: 2px 8px;
   border-radius: 12px;
-  background-color: ${colors.blue};
+  background-color: ${colors.black};
 `
 
 export default Badge

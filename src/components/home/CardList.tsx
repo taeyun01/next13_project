@@ -45,6 +45,7 @@ const CardList = () => {
             full
             weak
             size="medium"
+            color="basic"
             onClick={() => navigate.push('/card')}
           >
             더보기
