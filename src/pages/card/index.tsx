@@ -3,6 +3,7 @@ import Input from '@/components/shared/Input'
 import ListRow from '@/components/shared/ListRow'
 import Top from '@/components/shared/Top'
 import { getCards } from '@/remote/card'
+import { css } from '@emotion/react'
 import { QueryClient, dehydrate, useInfiniteQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import { useCallback, useEffect } from 'react'
@@ -66,6 +67,7 @@ const CardListPage = () => {
         <ul>
           {cards.map((card, idx) => (
             <ListRow
+              style={cardListBox}
               key={card.id}
               contents={
                 <ListRow.ListRowTexts
@@ -83,6 +85,10 @@ const CardListPage = () => {
     </div>
   )
 }
+
+const cardListBox = css`
+  cursor: pointer;
+`
 
 export const getServerSideProps = async () => {
   const client = new QueryClient()

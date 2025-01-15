@@ -1,7 +1,14 @@
 import Input from '@/components/shared/Input'
 import Top from '@/components/shared/Top'
 import { useRouter } from 'next/router'
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react'
+import {
+  ChangeEvent,
+  Fragment,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import { getSearchCards } from '@/remote/card'
 
 import { useQuery } from '@tanstack/react-query'
@@ -9,6 +16,8 @@ import Text from '@/components/shared/Text'
 import ListRow from '@/components/shared/ListRow'
 import Badge from '@/components/shared/Badge'
 import styled from '@emotion/styled'
+import Spacing from '@/components/shared/Spacing'
+import { css } from '@emotion/react'
 
 const SearchPage = () => {
   const [keyword, setKeyword] = useState('')
@@ -22,7 +31,7 @@ const SearchPage = () => {
     enabled: keyword !== '', // 검색을 입력했을 때만 쿼리 실행
   })
 
-  console.log(data)
+  // console.log(data)
 
   const handleKeyword = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value)
@@ -54,18 +63,23 @@ const SearchPage = () => {
         ) : (
           <ul>
             {data?.map((card, idx) => (
-              <ListRow
-                key={card.id}
-                contents={
-                  <ListRow.ListRowTexts
-                    title={`${idx + 1}위`}
-                    subTitle={card.name}
-                  />
-                }
-                right={card.payback && <Badge label={card.payback} />}
-                withArrow
-                onClick={() => navigate.push(`/card/${card.id}`)}
-              />
+              <Fragment key={card.id}>
+                <ListRow
+                  style={searchBox}
+                  left={
+                    <Text bold typography="t6">
+                      {idx + 1}
+                    </Text>
+                  }
+                  contents={
+                    <ListRow.ListRowTexts title={card.name} subTitle="" />
+                  }
+                  right={card.payback && <Badge label={card.payback} />}
+                  withArrow
+                  onClick={() => navigate.push(`/card/${card.id}`)}
+                />
+                <Spacing size={1} backgroundColor="gray100" />
+              </Fragment>
             ))}
           </ul>
         )}
@@ -81,6 +95,11 @@ const SearchEmptyStyled = styled.div`
   justify-content: center;
   align-items: center;
   padding: 12px 0;
+`
+
+const searchBox = css`
+  padding: 22px 12px;
+  cursor: pointer;
 `
 
 export default SearchPage

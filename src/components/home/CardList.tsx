@@ -5,6 +5,8 @@ import withSuspense from '@/components/shared/hocs/withSuspense'
 import ListRow from '@/components/shared/ListRow'
 import Skeleton from '@/components/shared/Skeleton'
 import Text from '@/components/shared/Text'
+import Top from '@/components/shared/Top'
+import { css } from '@emotion/react'
 
 import { useRouter } from 'next/router'
 
@@ -18,14 +20,16 @@ const CardList = () => {
 
   return (
     <div style={{ padding: '24px 0' }}>
-      <Text bold style={{ padding: '12px 24px' }}>
+      <Top title="추천카드" subtitle="회원님을 위해 준비했어요" />
+      {/* <Text bold style={{ padding: '12px 24px' }}>
         추천카드
-      </Text>
+      </Text> */}
       <ul>
         {data?.items
           .slice(0, 5)
           .map((card, idx) => (
             <ListRow
+              style={cardListBox}
               key={card.id}
               contents={
                 <ListRow.ListRowTexts
@@ -77,6 +81,10 @@ export const CardListSkeleton = () => {
     </div>
   )
 }
+
+const cardListBox = css`
+  cursor: pointer;
+`
 
 export default withSuspense(CardList, {
   fallback: <CardListSkeleton />,
