@@ -30,14 +30,15 @@ const RAW_RUNTIME_STATE =
           ["@emotion/react", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:11.14.0"],\
           ["@emotion/styled", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:11.14.0"],\
           ["@tanstack/react-query", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:4.36.1"],\
-          ["@types/node", "npm:20.17.12"],\
+          ["@types/node", "npm:20.17.13"],\
           ["@types/react", "npm:18.3.18"],\
           ["@types/react-dom", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:18.3.5"],\
           ["eslint", "npm:8.57.1"],\
           ["eslint-config-next", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:14.0.0"],\
           ["eslint-config-prettier", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:9.1.0"],\
-          ["eslint-plugin-prettier", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:5.2.1"],\
+          ["eslint-plugin-prettier", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:5.2.2"],\
           ["firebase", "npm:11.1.0"],\
+          ["framer-motion", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:11.18.0"],\
           ["next", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:13.5.8"],\
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.2.0"],\
@@ -1512,7 +1513,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@grpc/grpc-js", "npm:1.9.15"],\
           ["@grpc/proto-loader", "npm:0.7.13"],\
-          ["@types/node", "npm:22.10.5"]\
+          ["@types/node", "npm:22.10.6"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2110,18 +2111,18 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@types/node", [\
-      ["npm:20.17.12", {\
-        "packageLocation": "../../../../.yarn/berry/cache/@types-node-npm-20.17.12-ee47450752-10c0.zip/node_modules/@types/node/",\
+      ["npm:20.17.13", {\
+        "packageLocation": "../../../../.yarn/berry/cache/@types-node-npm-20.17.13-a153faffc8-10c0.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:20.17.12"],\
+          ["@types/node", "npm:20.17.13"],\
           ["undici-types", "npm:6.19.8"]\
         ],\
         "linkType": "HARD"\
       }],\
-      ["npm:22.10.5", {\
-        "packageLocation": "../../../../.yarn/berry/cache/@types-node-npm-22.10.5-cd9f5f929b-10c0.zip/node_modules/@types/node/",\
+      ["npm:22.10.6", {\
+        "packageLocation": "../../../../.yarn/berry/cache/@types-node-npm-22.10.6-28326d30fa-10c0.zip/node_modules/@types/node/",\
         "packageDependencies": [\
-          ["@types/node", "npm:22.10.5"],\
+          ["@types/node", "npm:22.10.6"],\
           ["undici-types", "npm:6.20.0"]\
         ],\
         "linkType": "HARD"\
@@ -2377,7 +2378,7 @@ const RAW_RUNTIME_STATE =
           ["call-bind", "npm:1.0.8"],\
           ["define-properties", "npm:1.2.1"],\
           ["es-abstract", "npm:1.23.9"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["get-intrinsic", "npm:1.2.7"],\
           ["is-string", "npm:1.1.1"]\
         ],\
@@ -2402,7 +2403,7 @@ const RAW_RUNTIME_STATE =
           ["define-properties", "npm:1.2.1"],\
           ["es-abstract", "npm:1.23.9"],\
           ["es-errors", "npm:1.3.0"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["es-shim-unscopables", "npm:1.0.2"]\
         ],\
         "linkType": "HARD"\
@@ -2417,7 +2418,7 @@ const RAW_RUNTIME_STATE =
           ["define-properties", "npm:1.2.1"],\
           ["es-abstract", "npm:1.23.9"],\
           ["es-errors", "npm:1.3.0"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["es-shim-unscopables", "npm:1.0.2"]\
         ],\
         "linkType": "HARD"\
@@ -2978,7 +2979,7 @@ const RAW_RUNTIME_STATE =
           ["data-view-byte-offset", "npm:1.0.1"],\
           ["es-define-property", "npm:1.0.1"],\
           ["es-errors", "npm:1.3.0"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["es-set-tostringtag", "npm:2.1.0"],\
           ["es-to-primitive", "npm:1.3.0"],\
           ["function.prototype.name", "npm:1.1.8"],\
@@ -3067,10 +3068,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["es-object-atoms", [\
-      ["npm:1.0.0", {\
-        "packageLocation": "../../../../.yarn/berry/cache/es-object-atoms-npm-1.0.0-c5cca6d760-10c0.zip/node_modules/es-object-atoms/",\
+      ["npm:1.1.1", {\
+        "packageLocation": "../../../../.yarn/berry/cache/es-object-atoms-npm-1.1.1-362d8043c2-10c0.zip/node_modules/es-object-atoms/",\
         "packageDependencies": [\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["es-errors", "npm:1.3.0"]\
         ],\
         "linkType": "HARD"\
@@ -3405,17 +3406,17 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["eslint-plugin-prettier", [\
-      ["npm:5.2.1", {\
-        "packageLocation": "../../../../.yarn/berry/cache/eslint-plugin-prettier-npm-5.2.1-7057756a8d-10c0.zip/node_modules/eslint-plugin-prettier/",\
+      ["npm:5.2.2", {\
+        "packageLocation": "../../../../.yarn/berry/cache/eslint-plugin-prettier-npm-5.2.2-fdf46f9e65-10c0.zip/node_modules/eslint-plugin-prettier/",\
         "packageDependencies": [\
-          ["eslint-plugin-prettier", "npm:5.2.1"]\
+          ["eslint-plugin-prettier", "npm:5.2.2"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:5.2.1", {\
-        "packageLocation": "./.yarn/__virtual__/eslint-plugin-prettier-virtual-e54dfa201c/5/.yarn/berry/cache/eslint-plugin-prettier-npm-5.2.1-7057756a8d-10c0.zip/node_modules/eslint-plugin-prettier/",\
+      ["virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:5.2.2", {\
+        "packageLocation": "./.yarn/__virtual__/eslint-plugin-prettier-virtual-ac57467a1f/5/.yarn/berry/cache/eslint-plugin-prettier-npm-5.2.2-fdf46f9e65-10c0.zip/node_modules/eslint-plugin-prettier/",\
         "packageDependencies": [\
-          ["eslint-plugin-prettier", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:5.2.1"],\
+          ["eslint-plugin-prettier", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:5.2.2"],\
           ["@types/eslint", null],\
           ["@types/eslint-config-prettier", null],\
           ["@types/prettier", null],\
@@ -3746,6 +3747,39 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["framer-motion", [\
+      ["npm:11.18.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/framer-motion-npm-11.18.0-6a1a813b6d-10c0.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "npm:11.18.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:11.18.0", {\
+        "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-e695c11d8f/5/.yarn/berry/cache/framer-motion-npm-11.18.0-6a1a813b6d-10c0.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:11.18.0"],\
+          ["@emotion/is-prop-valid", null],\
+          ["@types/emotion__is-prop-valid", null],\
+          ["@types/react", "npm:18.3.18"],\
+          ["@types/react-dom", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:18.3.5"],\
+          ["motion-dom", "npm:11.16.4"],\
+          ["motion-utils", "npm:11.16.0"],\
+          ["react", "npm:18.2.0"],\
+          ["react-dom", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:18.2.0"],\
+          ["tslib", "npm:2.8.1"]\
+        ],\
+        "packagePeers": [\
+          "@emotion/is-prop-valid",\
+          "@types/emotion__is-prop-valid",\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["fs.realpath", [\
       ["npm:1.0.0", {\
         "packageLocation": "../../../../.yarn/berry/cache/fs.realpath-npm-1.0.0-c8f05d8126-10c0.zip/node_modules/fs.realpath/",\
@@ -3805,7 +3839,7 @@ const RAW_RUNTIME_STATE =
           ["call-bind-apply-helpers", "npm:1.0.1"],\
           ["es-define-property", "npm:1.0.1"],\
           ["es-errors", "npm:1.3.0"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["function-bind", "npm:1.1.2"],\
           ["get-proto", "npm:1.0.1"],\
           ["gopd", "npm:1.2.0"],\
@@ -3822,7 +3856,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["get-proto", "npm:1.0.1"],\
           ["dunder-proto", "npm:1.0.1"],\
-          ["es-object-atoms", "npm:1.0.0"]\
+          ["es-object-atoms", "npm:1.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4452,7 +4486,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["iterator.prototype", "npm:1.1.5"],\
           ["define-data-property", "npm:1.1.4"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["get-intrinsic", "npm:1.2.7"],\
           ["get-proto", "npm:1.0.1"],\
           ["has-symbols", "npm:1.1.0"],\
@@ -4700,6 +4734,25 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["motion-dom", [\
+      ["npm:11.16.4", {\
+        "packageLocation": "../../../../.yarn/berry/cache/motion-dom-npm-11.16.4-f949fb8eb5-10c0.zip/node_modules/motion-dom/",\
+        "packageDependencies": [\
+          ["motion-dom", "npm:11.16.4"],\
+          ["motion-utils", "npm:11.16.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["motion-utils", [\
+      ["npm:11.16.0", {\
+        "packageLocation": "../../../../.yarn/berry/cache/motion-utils-npm-11.16.0-181a0e4325-10c0.zip/node_modules/motion-utils/",\
+        "packageDependencies": [\
+          ["motion-utils", "npm:11.16.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["ms", [\
       ["npm:2.1.3", {\
         "packageLocation": "../../../../.yarn/berry/cache/ms-npm-2.1.3-81ff3cfac1-10c0.zip/node_modules/ms/",\
@@ -4785,14 +4838,15 @@ const RAW_RUNTIME_STATE =
           ["@emotion/react", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:11.14.0"],\
           ["@emotion/styled", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:11.14.0"],\
           ["@tanstack/react-query", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:4.36.1"],\
-          ["@types/node", "npm:20.17.12"],\
+          ["@types/node", "npm:20.17.13"],\
           ["@types/react", "npm:18.3.18"],\
           ["@types/react-dom", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:18.3.5"],\
           ["eslint", "npm:8.57.1"],\
           ["eslint-config-next", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:14.0.0"],\
           ["eslint-config-prettier", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:9.1.0"],\
-          ["eslint-plugin-prettier", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:5.2.1"],\
+          ["eslint-plugin-prettier", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:5.2.2"],\
           ["firebase", "npm:11.1.0"],\
+          ["framer-motion", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:11.18.0"],\
           ["next", "virtual:b3e1ec8d6d2347760c1a2defdaff664e9e81a62d0e028e25dd91e204cf4c3ad94b3429095737dddca5fc6f783b01c2dbcd4c6552cff5b229a52e07b3c155b0ec#npm:13.5.8"],\
           ["prettier", "npm:3.4.2"],\
           ["react", "npm:18.2.0"],\
@@ -4840,7 +4894,7 @@ const RAW_RUNTIME_STATE =
           ["call-bind", "npm:1.0.8"],\
           ["call-bound", "npm:1.0.3"],\
           ["define-properties", "npm:1.2.1"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["has-symbols", "npm:1.1.0"],\
           ["object-keys", "npm:1.1.1"]\
         ],\
@@ -4854,7 +4908,7 @@ const RAW_RUNTIME_STATE =
           ["object.entries", "npm:1.1.8"],\
           ["call-bind", "npm:1.0.8"],\
           ["define-properties", "npm:1.2.1"],\
-          ["es-object-atoms", "npm:1.0.0"]\
+          ["es-object-atoms", "npm:1.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4867,7 +4921,7 @@ const RAW_RUNTIME_STATE =
           ["call-bind", "npm:1.0.8"],\
           ["define-properties", "npm:1.2.1"],\
           ["es-abstract", "npm:1.23.9"],\
-          ["es-object-atoms", "npm:1.0.0"]\
+          ["es-object-atoms", "npm:1.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4892,7 +4946,7 @@ const RAW_RUNTIME_STATE =
           ["call-bind", "npm:1.0.8"],\
           ["call-bound", "npm:1.0.3"],\
           ["define-properties", "npm:1.2.1"],\
-          ["es-object-atoms", "npm:1.0.0"]\
+          ["es-object-atoms", "npm:1.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5116,7 +5170,7 @@ const RAW_RUNTIME_STATE =
           ["@protobufjs/path", "npm:1.1.2"],\
           ["@protobufjs/pool", "npm:1.1.0"],\
           ["@protobufjs/utf8", "npm:1.1.0"],\
-          ["@types/node", "npm:22.10.5"],\
+          ["@types/node", "npm:22.10.6"],\
           ["long", "npm:5.2.4"]\
         ],\
         "linkType": "HARD"\
@@ -5215,7 +5269,7 @@ const RAW_RUNTIME_STATE =
           ["define-properties", "npm:1.2.1"],\
           ["es-abstract", "npm:1.23.9"],\
           ["es-errors", "npm:1.3.0"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["get-intrinsic", "npm:1.2.7"],\
           ["get-proto", "npm:1.0.1"],\
           ["which-builtin-type", "npm:1.2.1"]\
@@ -5432,7 +5486,7 @@ const RAW_RUNTIME_STATE =
           ["set-proto", "npm:1.0.0"],\
           ["dunder-proto", "npm:1.0.1"],\
           ["es-errors", "npm:1.3.0"],\
-          ["es-object-atoms", "npm:1.0.0"]\
+          ["es-object-atoms", "npm:1.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5628,7 +5682,7 @@ const RAW_RUNTIME_STATE =
           ["define-properties", "npm:1.2.1"],\
           ["es-abstract", "npm:1.23.9"],\
           ["es-errors", "npm:1.3.0"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["get-intrinsic", "npm:1.2.7"],\
           ["gopd", "npm:1.2.0"],\
           ["has-symbols", "npm:1.1.0"],\
@@ -5661,7 +5715,7 @@ const RAW_RUNTIME_STATE =
           ["define-data-property", "npm:1.1.4"],\
           ["define-properties", "npm:1.2.1"],\
           ["es-abstract", "npm:1.23.9"],\
-          ["es-object-atoms", "npm:1.0.0"],\
+          ["es-object-atoms", "npm:1.1.1"],\
           ["has-property-descriptors", "npm:1.0.2"]\
         ],\
         "linkType": "HARD"\
@@ -5675,7 +5729,7 @@ const RAW_RUNTIME_STATE =
           ["call-bind", "npm:1.0.8"],\
           ["call-bound", "npm:1.0.3"],\
           ["define-properties", "npm:1.2.1"],\
-          ["es-object-atoms", "npm:1.0.0"]\
+          ["es-object-atoms", "npm:1.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5687,7 +5741,7 @@ const RAW_RUNTIME_STATE =
           ["string.prototype.trimstart", "npm:1.0.8"],\
           ["call-bind", "npm:1.0.8"],\
           ["define-properties", "npm:1.2.1"],\
-          ["es-object-atoms", "npm:1.0.0"]\
+          ["es-object-atoms", "npm:1.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\

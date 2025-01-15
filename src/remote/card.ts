@@ -9,6 +9,8 @@ import {
   limit,
   getDocs,
   where,
+  getDoc,
+  doc,
 } from 'firebase/firestore'
 
 //* 전체 카드 리스트 조회
@@ -53,4 +55,13 @@ export const getSearchCards = async (keyword: string) => {
   }))
 
   return items
+}
+
+export const getCard = async (id: string) => {
+  const cardSnapshot = await getDoc(doc(store, COLLECTIONS.CARD, id))
+
+  return {
+    id: cardSnapshot.id,
+    ...(cardSnapshot.data() as Card),
+  }
 }
