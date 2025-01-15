@@ -18,17 +18,21 @@ import Badge from '@/components/shared/Badge'
 import styled from '@emotion/styled'
 import Spacing from '@/components/shared/Spacing'
 import { css } from '@emotion/react'
+import useDebounce from '@/components/shared/hocs/useDebounce'
 
 const SearchPage = () => {
   const [keyword, setKeyword] = useState('')
+  const debouncedKeyword = useDebounce(keyword)
+  console.log('debouncedKeyword', debouncedKeyword)
+
   const navigate = useRouter()
 
   const inputRef = useRef<HTMLInputElement>(null)
 
   const { data } = useQuery({
-    queryKey: ['search', keyword],
-    queryFn: () => getSearchCards(keyword),
-    enabled: keyword !== '', // 검색을 입력했을 때만 쿼리 실행
+    queryKey: ['search', debouncedKeyword],
+    queryFn: () => getSearchCards(debouncedKeyword),
+    enabled: debouncedKeyword !== '', // 검색을 입력했을 때만 쿼리 실행
   })
 
   // console.log(data)
