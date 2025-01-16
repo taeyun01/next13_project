@@ -10,22 +10,26 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 
+import { SessionProvider } from 'next-auth/react'
+
 const queryClient = new QueryClient()
 
 export default function App({
   Component,
-  pageProps: { dehydratedState, ...pageProps },
+  pageProps: { dehydratedState, session, ...pageProps },
 }: AppProps) {
-  console.log('_app')
+  // console.log('_app')
 
   return (
     <Layout>
       <Global styles={globalStyles} />
-      <QueryClientProvider client={queryClient}>
-        <Hydrate state={dehydratedState}>
-          <Component {...pageProps} />
-        </Hydrate>
-      </QueryClientProvider>
+      <SessionProvider session={session}>
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={dehydratedState}>
+            <Component {...pageProps} />
+          </Hydrate>
+        </QueryClientProvider>
+      </SessionProvider>
     </Layout>
   )
 }
