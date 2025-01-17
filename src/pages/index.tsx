@@ -5,6 +5,7 @@ import { BannerSkeleton } from '@/components/home/EventBanners'
 import { CreditScoreSkeleton } from '@/components/home/CreditScore'
 import Spacing from '@/components/shared/Spacing'
 import { CardListSkeleton } from '@/components/home/CardList'
+import { useSession } from 'next-auth/react'
 
 //* dynamic은 리액트 lazy와 suspense가 합쳐져 있다고 생각. (코드 컴포넌트 청크가 분리됨)
 const EventBanners = dynamic(() => import('@/components/home/EventBanners'), {
@@ -23,6 +24,8 @@ const CardList = dynamic(() => import('@/components/home/CardList'), {
 })
 
 export default function Home() {
+  const { data: session } = useSession() // 유저 세션 가져오기
+
   return (
     <>
       <EventBanners />

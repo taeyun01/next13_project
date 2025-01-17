@@ -24,7 +24,7 @@ const SigninPage = ({
         align="center"
         gap={80}
       >
-        <Text bold>자산관리 앱</Text>
+        <Text bold>로그인 하시겠습니까?</Text>
         <ul>
           {Object.values(providers).map((provider) => (
             <li key={provider.id}>
@@ -32,7 +32,7 @@ const SigninPage = ({
                 color="basic"
                 onClick={() =>
                   signIn(provider.id, {
-                    callbackUrl: '/',
+                    callbackUrl: '/', // 로그인 후 이동할 페이지
                   })
                 }
               >
