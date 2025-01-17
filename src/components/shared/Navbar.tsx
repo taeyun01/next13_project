@@ -1,89 +1,60 @@
-// import { Link, useLocation } from 'react-router-dom'
-// import Flex from './Flex'
-// import Button from './Button'
-// import { css } from '@emotion/react'
-// import { colors } from '../../styles/colorPalette'
-// import { useCallback } from 'react'
-// import useUser from '@/hooks/auth/useUser'
-// import Text from '@/components/shared/Text'
+import Button from '@/components/shared/Button'
+import Flex from '@/components/shared/Flex'
+import { colors } from '@/styles/colorPalette'
+import { css } from '@emotion/react'
+import { useSession } from 'next-auth/react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useCallback } from 'react'
 
-// const Navbar = () => {
-//   const location = useLocation()
-//   const showSigninButton = ['/signin', '/signup'].includes(location.pathname)
+const Navbar = () => {
+  const { data: session } = useSession()
+  const router = useRouter()
+  // 라우터의 패스네임이 로그인 페이지가 아닐때만 버튼 렌더링 (로그인 페이지면 버튼 제거)
+  const showSignButton = ['/auth/signin'].includes(router.pathname) === false
 
-//   // 유저 정보 가져오기
-//   const user = useUser()
+  const renderButton = useCallback(() => {
+    if (session) {
+      return (
+        <Link href="/my">
+          <Image
+            src={session.user?.image ?? ''} // 이미지가 없을땐 fallback 이미지 넣기
+            width={40}
+            height={40}
+            alt="user-image"
+          />
+        </Link>
+      )
+    }
 
-//   // 유저 상태에 따라 버튼을 다르게 렌더링 해주는 함수
-//   const renderButton = useCallback(() => {
-//     // 로그인 상태일 경우 (user가 null이 아닐 경우, user정보가 있을 경우)
-//     if (user) {
-//       return (
-//         <Flex align="center" gap={10}>
-//           <Link to="/my">
-//             <img
-//               src={
-//                 user.photoURL ??
-//                 'https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-128.png'
-//               }
-//               alt="유저의 이미지"
-//               width={40}
-//               height={40}
-//               style={{ borderRadius: '100%' }}
-//             />
-//           </Link>
-//           {/* <Link to="/settings">
-//             <img
-//               src="https://cdn1.iconfinder.com/data/icons/ionicons-outline-vol-2/512/settings-outline-64.png"
-//               alt="설정 아이콘"
-//               width={30}
-//               height={30}
-//             />
-//           </Link> */}
-//         </Flex>
-//       )
-//     }
+    if (showSignButton) {
+      return (
+        <Link href="/auth/signin">
+          <Button color="basic">로그인/회원가입</Button>
+        </Link>
+      )
+    }
 
-//     // /signin', '/signup 경로가 아닐 경우. 로그인 버튼 렌더링
-//     if (!showSigninButton) {
-//       return (
-//         <Link to="/signin">
-//           <Button>로그인/회원가입</Button>
-//         </Link>
-//       )
-//     }
+    return null // 둘다 아닐때 null 반환
+  }, [session, showSignButton])
 
-//     return null
-//   }, [user, showSigninButton])
+  return (
+    <Flex justify="space-between" align="center" css={navbarStyles}>
+      <Link href="/">자산관리</Link>
+      {renderButton()}
+    </Flex>
+  )
+}
 
-//   return (
-//     <Flex justify="space-between" align="center" css={navbarContainerStyles}>
-//       <Link to="/">
-//         <Flex align="center" gap={6}>
-//           <img
-//             src="https://cdn4.iconfinder.com/data/icons/general-office/91/General_Office_31-64.png"
-//             alt="Booking 아이콘"
-//             width={27}
-//             height={27}
-//           />
-//           <Text typography="t6">여행의 시작</Text>
-//         </Flex>
-//       </Link>
+const navbarStyles = css`
+  padding: 10px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: ${colors.white};
+  border-bottom: 1px solid ${colors.gray100};
+  height: 33.5px;
+`
 
-//       {renderButton()}
-//     </Flex>
-//   )
-// }
-
-// const navbarContainerStyles = css`
-//   padding: 0px 24px;
-
-//   height: 64px;
-
-//   position: sticky;
-//   top: 0;
-//   background-color: ${colors.white};
-//   z-index: 10;
-//   border-bottom: 1px solid ${colors.gray};
-// `
-// export default Navbar
+export default Navbar
