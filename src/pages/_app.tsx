@@ -11,6 +11,7 @@ import {
 } from '@tanstack/react-query'
 
 import { SessionProvider } from 'next-auth/react'
+import AuthGuard from '@/components/auth/AuthGuard'
 
 const queryClient = new QueryClient()
 
@@ -26,7 +27,9 @@ export default function App({
       <SessionProvider session={session}>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={dehydratedState}>
-            <Component {...pageProps} />
+            <AuthGuard>
+              <Component {...pageProps} />
+            </AuthGuard>
           </Hydrate>
         </QueryClientProvider>
       </SessionProvider>
