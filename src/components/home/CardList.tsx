@@ -14,8 +14,6 @@ const CardList = () => {
   const { data } = useCards()
   const navigate = useRouter()
 
-  if (!data || !data.items) return null
-
   const isShowMoreButton = (data?.items.length ?? 0) > 5
 
   return (

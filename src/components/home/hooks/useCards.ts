@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 
 const useCards = () => {
   const { data } = useQuery({
-    queryKey: ['cards'],
+    queryKey: ['home-cards'],
     queryFn: () => getCards(),
     suspense: true,
   })
