@@ -13,6 +13,7 @@ import {
 import { SessionProvider } from 'next-auth/react'
 import AuthGuard from '@/components/auth/AuthGuard'
 import Navbar from '@/components/shared/Navbar'
+import { AlertContextProvider } from '@/contexts/AlertContext'
 
 const queryClient = new QueryClient()
 
@@ -28,10 +29,12 @@ export default function App({
       <SessionProvider session={session}>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={dehydratedState}>
-            <AuthGuard>
-              <Navbar />
-              <Component {...pageProps} />
-            </AuthGuard>
+            <AlertContextProvider>
+              <AuthGuard>
+                <Navbar />
+                <Component {...pageProps} />
+              </AuthGuard>
+            </AlertContextProvider>
           </Hydrate>
         </QueryClientProvider>
       </SessionProvider>
