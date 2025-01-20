@@ -23,7 +23,7 @@ import useDebounce from '@/components/shared/hocs/useDebounce'
 const SearchPage = () => {
   const [keyword, setKeyword] = useState('')
   const debouncedKeyword = useDebounce(keyword)
-  console.log('debouncedKeyword', debouncedKeyword)
+  // console.log('debouncedKeyword', debouncedKeyword)
 
   const navigate = useRouter()
 
