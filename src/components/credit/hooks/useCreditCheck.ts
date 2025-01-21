@@ -24,7 +24,7 @@ const useCreditCheck = ({
       console.log('status:', status)
       // 'COMPLETE'상태면 조회성공!
       if (status === CHECK_STATUS.COMPLETE) {
-        onSuccess(0)
+        onSuccess(getCreditScore(200, 1000))
       }
     },
     onError,
@@ -46,6 +46,11 @@ const getCheckStatus = () => {
   }
 
   return status
+}
+
+// ex) 200 ~ 1000 사이의 랜덤 숫자를 반환
+const getCreditScore = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
 export default useCreditCheck

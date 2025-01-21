@@ -3,17 +3,27 @@ import FixedBottomButton from '@/components/shared/FixedBottomButton'
 import FullPageLoader from '@/components/shared/FullPageLoader'
 import { CHECK_STATUS } from '@/constants/credit'
 import { useAlertContext } from '@/contexts/AlertContext'
+import useUser from '@/hooks/useUser'
+import { updateCredit } from '@/remote/credit'
+import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 
 const CreditCheckPage = () => {
   // 폴링상태를 체크하여 성공 또는 실패가 호출됐다면 폴링을 중지
   const [readyToPoll, setReadyToPoll] = useState(true)
   const showAlert = useAlertContext()
+  const user = useUser()
+
+  const { mutate } = useMutation({
+    mutationFn: (creditScore: number) =>
+      updateCredit({ userId: user?.id as string, creditScore }),
+  })
 
   const { data: status } = useCreditCheck({
     onSuccess: (creditScore) => {
       console.log('조회성공 나의 신용점수는!?', creditScore + '점')
       setReadyToPoll(false)
+      mutate(creditScore)
     },
     onError: () => {
       setReadyToPoll(false)
@@ -29,8 +39,12 @@ const CreditCheckPage = () => {
   return (
     <div>
       <FullPageLoader message={STATUS_CHECK_MESSAGE[status ?? 'READY']} />
-      {status === 'COMPLETE' && (
-        <FixedBottomButton color="basic" label="다음" onClick={() => {}} />
+      {status === CHECK_STATUS.COMPLETE && (
+        <FixedBottomButton
+          color="basic"
+          label="확인"
+          onClick={() => window.history.back()}
+        />
       )}
     </div>
   )
