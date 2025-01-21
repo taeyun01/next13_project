@@ -1,7 +1,8 @@
-import { collection, doc, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, setDoc } from 'firebase/firestore'
 
 import { COLLECTIONS } from '@constants/collection'
 import { store } from '@/remote/firebase'
+import { Credit } from '@/types/credit'
 
 // 우선 어떤 유저가 몇점의 신용점수를 가지고 있는지 판단하기 위해 userId와 creditScore을 받음
 export const updateCredit = ({
@@ -17,4 +18,20 @@ export const updateCredit = ({
     userId,
     creditScore,
   })
+}
+
+export const getCredit = async (userId: string) => {
+  const creditSnapshot = await getDoc(
+    doc(collection(store, COLLECTIONS.CREDIT), userId),
+  )
+
+  // 신용점수 조회를 했는데 없으면 유저가 아직 신용점수를 조회하지 않았기 때문에 null반환
+  if (!creditSnapshot.exists()) {
+    return null
+  }
+
+  return {
+    id: creditSnapshot.id,
+    ...(creditSnapshot.data() as Credit),
+  }
 }

@@ -1,3 +1,4 @@
+import useCredit from '@/components/credit/hooks/useCredit'
 import CreditScoreChart from '@/components/shared/CreditScoreChart'
 import Flex from '@/components/shared/Flex'
 import ListRow from '@/components/shared/ListRow'
@@ -5,6 +6,11 @@ import Spacing from '@/components/shared/Spacing'
 import Text from '@/components/shared/Text'
 import { useAlertContext } from '@/contexts/AlertContext'
 import useUser from '@/hooks/useUser'
+import { getCredit } from '@/remote/credit'
+import { User } from '@/types/user'
+import { dehydrate, QueryClient } from '@tanstack/react-query'
+import { GetServerSidePropsContext } from 'next'
+import { getSession } from 'next-auth/react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useCallback } from 'react'
@@ -14,10 +20,11 @@ const FixedBottomButton = dynamic(() => import('@shared/FixedBottomButton'), {
 })
 
 const CreditPage = () => {
-  const isCreditScoreChecked = true // 신용점수를 조회했는지 여부
+  // const isCreditScoreChecked = true // 신용점수를 조회했는지 여부
   const user = useUser()
   const showAlert = useAlertContext()
   const router = useRouter()
+  const { data: isCreditScoreChecked } = useCredit() // 서버사이드에서 처리했기때문에 데이터가 바로 차 있을거임
 
   const handleCheck = useCallback(() => {
     if (!user) {
@@ -35,6 +42,8 @@ const CreditPage = () => {
   }, [user, router, showAlert])
 
   const renderMyCreditScore = () => {
+    if (!isCreditScoreChecked) return null
+
     return (
       <>
         <Spacing size={40} />
@@ -43,8 +52,7 @@ const CreditPage = () => {
             나의 신용점수
           </Text>
           <Spacing size={10} />
-          {/*// TODO: 실제 점수 가져와서 그리기 */}
-          <CreditScoreChart score={0} />
+          <CreditScoreChart score={isCreditScoreChecked.creditScore} />
         </Flex>
         <Spacing size={80} />
         <ul>
@@ -112,6 +120,35 @@ const CreditPage = () => {
       />
     </Flex>
   )
+}
+
+// 서버사이드에서 신용점수 조회하기
+// 신용점수 조회 페이지에서 가장 중요한 정보는 유저의 신용점수기 때문에 서버사이드에서 불러오도록 설정
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext,
+) => {
+  // 서버에 저장되어있는 세션정보를 가지고 오기 위해서는 getSession 사용
+  const session = await getSession(context)
+
+  // 세션이 있을때만 신용점수 조회
+  if (!session || !session.user) {
+    const client = new QueryClient()
+
+    await client.prefetchQuery({
+      queryKey: ['credit', (session?.user as User)?.id],
+      queryFn: () => getCredit((session?.user as User)?.id),
+    })
+
+    return {
+      props: {
+        dehydratedState: JSON.parse(JSON.stringify(dehydrate(client))),
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
 }
 
 export default CreditPage
