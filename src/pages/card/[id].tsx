@@ -86,7 +86,11 @@ const CardDetailPage = ({ initialCard }: CardDetailPageProps) => {
         </Flex>
       )}
 
-      <FixedBottomButton label="1분만에 신청하고 혜택받기" onClick={() => {}} />
+      <FixedBottomButton
+        color="basic"
+        label="1분만에 신청하고 혜택받기"
+        onClick={() => {}}
+      />
     </div>
   )
 }

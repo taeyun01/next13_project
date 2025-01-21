@@ -18,7 +18,7 @@ import Badge from '@/components/shared/Badge'
 import styled from '@emotion/styled'
 import Spacing from '@/components/shared/Spacing'
 import { css } from '@emotion/react'
-import useDebounce from '@/components/shared/hocs/useDebounce'
+import useDebounce from '@/hooks/useDebounce'
 
 const SearchPage = () => {
   const [keyword, setKeyword] = useState('')

@@ -1,6 +1,6 @@
 import FixedBottomButton from '@/components/shared/FixedBottomButton'
 import Flex from '@/components/shared/Flex'
-import withAuth from '@/components/shared/hocs/withAuth'
+import withAuth from '@/hooks/withAuth'
 import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
 import { signOut, useSession } from 'next-auth/react'

@@ -35,9 +35,10 @@ const Preview = ({ data, mode }: { data: Event; mode: 'preview' | 'edit' }) => {
         <FixedBottomButton
           label={buttonLabel}
           onClick={() => router.push(link)}
+          color="basic"
         />
       ) : (
-        buttonLabel && <Button>{buttonLabel}</Button>
+        buttonLabel && <Button color="basic">{buttonLabel}</Button>
       )}
     </Flex>
   )
