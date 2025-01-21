@@ -19,7 +19,10 @@ const Navbar = () => {
       return (
         <Link href="/my">
           <Image
-            src={session.user?.image ?? ''} // 이미지가 없을땐 fallback 이미지 넣기
+            src={
+              session.user?.image ??
+              'src="https://cdn4.iconfinder.com/data/icons/music-ui-solid-24px/24/user_account_profile-2-512.png"'
+            } // 이미지가 없을땐 fallback 이미지 넣기
             width={40}
             height={40}
             alt="user-image"
@@ -41,7 +44,14 @@ const Navbar = () => {
 
   return (
     <Flex justify="space-between" align="center" css={navbarStyles}>
-      <Link href="/">자산관리</Link>
+      <Link href="/">
+        <Image
+          src="https://cdn0.iconfinder.com/data/icons/social-media-with-fill/64/twitter_colour-64.png"
+          alt="logo"
+          width={35}
+          height={35}
+        />
+      </Link>
       {renderButton()}
     </Flex>
   )
