@@ -14,7 +14,7 @@ const Container = styled.div({
   width: '100%',
   height: 10,
   overflow: 'hidden', // 프로그래스바 넘치는 부분을 숨김
-  backgroundColor: colors.gray,
+  backgroundColor: colors.gray100,
   borderRadius: 6,
 })
 
