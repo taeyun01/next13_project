@@ -10,13 +10,17 @@ import 'swiper/css'
 
 import Skeleton from '@/components/shared/Skeleton'
 import Image from 'next/image'
+import useAccount from '@/hooks/useAccount'
 
 const EventBanners = () => {
   const { data } = useEventBanners()
+  const { data: account } = useAccount()
+
+  const accountStatus = account?.status === 'DONE' ? 0 : 1.04
 
   return (
     <div style={{ padding: '24px' }}>
-      <Swiper spaceBetween={8} slidesPerView={1.04}>
+      <Swiper spaceBetween={8} slidesPerView={accountStatus}>
         {data?.map((banner) => (
           <SwiperSlide key={banner.id}>
             <Link href={banner.link}>

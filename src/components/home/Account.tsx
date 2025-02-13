@@ -4,56 +4,74 @@ import Button from '@/components/shared/Button'
 import Image from 'next/image'
 import { css } from '@emotion/react'
 
+import useAccount from '@/hooks/useAccount'
+import useUser from '@/hooks/useUser'
+import addDelimiter from '@/utils/addDelimiter'
+import Link from 'next/link'
+
 //* 자산 관련 정보를 보여주는 컴포넌트
 const Account = () => {
-  const hasAccount = true
+  const { data: account } = useAccount()
+  const user = useUser()
 
-  // 계좌가 있을 때
-  if (hasAccount) {
+  // 계좌가 없을 때
+  if (!account) {
     return (
       <div style={{ padding: '24px' }}>
         <Flex justify="space-between" align="center">
-          <Flex direction="column" gap={2}>
-            <Text typography="t6" color="gray600">
-              새우깡 회원님의 자산
+          <Flex direction="column" gap={8}>
+            <Text bold css={textStyles}>
+              {`계좌 개설이\n더 쉽고 빨라 졌어요`}
             </Text>
-            <Text typography="t3" bold>
-              12,000원
-            </Text>
+            <Link href="/account/new">
+              <Button color="basic">3분만에 개설하기</Button>
+            </Link>
           </Flex>
-          <Button color="basic">분석</Button>
+          <Image
+            src="https://cdn2.iconfinder.com/data/icons/flat-icons-19/512/Coin.png"
+            alt="cash icon"
+            width={80}
+            height={80}
+          />
         </Flex>
       </div>
     )
   }
 
-  // 계좌가 없을 때
-  // 또는 계좌를 개설중 일 때 (계좌개설을 완료하지 않은 상태)
+  // 계좌개설은 했지만 심사중 일때
+  if (account.status === 'READY') {
+    return (
+      <div style={{ padding: '24px' }}>
+        <Flex justify="space-between" align="center">
+          <Flex direction="column" gap={8}>
+            <Text bold css={textStyles}>
+              계좌개설 심사중입니다.
+            </Text>
+          </Flex>
+          <Image
+            src="https://cdn2.iconfinder.com/data/icons/flat-icons-19/512/Coin.png"
+            alt="cash icon"
+            width={80}
+            height={80}
+          />
+        </Flex>
+      </div>
+    )
+  }
 
-  const isAccountCreating = 'READY'
-  const title =
-    isAccountCreating === 'READY'
-      ? '만들고 있으신\n계좌가 있으시군요.'
-      : '계좌 개설이\n더 쉽고 빨라 졌어요'
-
-  const buttonLabel =
-    isAccountCreating === 'READY' ? '이어 만들기' : '3분만에 개설하기'
-
+  // 계좌개설이 완료되어 계좌가 있을 때
   return (
     <div style={{ padding: '24px' }}>
       <Flex justify="space-between" align="center">
-        <Flex direction="column" gap={8}>
-          <Text bold css={textStyles}>
-            {title}
+        <Flex direction="column" gap={2}>
+          <Text typography="t6" color="gray600">
+            {user?.name} 회원님의 자산
           </Text>
-          <Button color="basic">{buttonLabel}</Button>
+          <Text typography="t3" bold>
+            {addDelimiter(account.balance)}원
+          </Text>
         </Flex>
-        <Image
-          src="https://cdn2.iconfinder.com/data/icons/flat-icons-19/512/Coin.png"
-          alt="cash icon"
-          width={80}
-          height={80}
-        />
+        <Button color="basic">분석</Button>
       </Flex>
     </div>
   )
