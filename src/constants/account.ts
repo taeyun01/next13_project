@@ -1,4 +1,4 @@
-import { Term } from '@/types/account'
+import { AccountForm, Term } from '@/types/account'
 
 export const TERMS = [
   {
@@ -20,3 +20,30 @@ export const TERMS = [
     mandatory: false, // false면 선택 약관
   },
 ] as Term[]
+
+export const FORMS = [
+  {
+    id: 'name',
+    label: '한글명',
+    required: true,
+    type: 'TEXT_FIELD',
+  },
+  {
+    id: 'phone',
+    label: '휴대전화번호',
+    required: true,
+    type: 'TEXT_FIELD',
+  },
+  {
+    id: 'email',
+    label: '이메일',
+    required: true,
+    type: 'TEXT_FIELD',
+  },
+  {
+    id: 'accountName',
+    label: '통장이름',
+    required: true,
+    type: 'TEXT_FIELD',
+  },
+] as AccountForm[]

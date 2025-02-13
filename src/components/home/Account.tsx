@@ -6,7 +6,7 @@ import { css } from '@emotion/react'
 
 //* 자산 관련 정보를 보여주는 컴포넌트
 const Account = () => {
-  const hasAccount = false
+  const hasAccount = true
 
   // 계좌가 있을 때
   if (hasAccount) {

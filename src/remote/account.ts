@@ -2,6 +2,7 @@ import { collection, doc, setDoc, getDoc } from 'firebase/firestore'
 
 import { COLLECTIONS } from '@/constants/collection'
 import { store } from '@/remote/firebase'
+import { Account } from '@/types/account'
 
 // 어떤 유저가 어떤 약관에 동의 했는지 저장
 export const setTerms = async ({
@@ -35,5 +36,27 @@ export const getTerms = async (userId: string) => {
       userId: string
       termIds: string[]
     }),
+  }
+}
+
+export const createAccount = async (newAccount: Account) => {
+  return setDoc(
+    doc(collection(store, COLLECTIONS.ACCOUNT), newAccount.userId), // 유저의 id로 문서 생성
+    newAccount, // 계좌 정보 저장
+  )
+}
+
+export const getAccount = async (userId: string) => {
+  const snapshot = await getDoc(
+    doc(collection(store, COLLECTIONS.ACCOUNT), userId),
+  )
+
+  if (!snapshot.exists()) {
+    return null
+  }
+
+  return {
+    id: snapshot.id,
+    ...(snapshot.data() as Account),
   }
 }
