@@ -5,6 +5,7 @@ const COLLECTIONS = {
   CREDIT: 'CREDIT',
   TERMS: 'TERMS',
   ACCOUNT: 'ACCOUNT',
+  TRANSACTION: 'TRANSACTION',
 } as const
 
 export { COLLECTIONS }

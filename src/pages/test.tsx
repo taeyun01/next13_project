@@ -4,6 +4,7 @@ import Flex from '@/components/shared/Flex'
 import Text from '@/components/shared/Text'
 import Spacing from '@/components/shared/Spacing'
 import EventForm from '@/components/test/EventForm'
+import TransactionForm from '@/components/test/TransactionForm'
 
 const TestPage = () => {
   return (
@@ -27,6 +28,16 @@ const TestPage = () => {
         style={{ margin: '20px 0' }}
       />
       <EventForm />
+
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0' }}
+      />
+      <Flex direction="column" gap={8} style={{ padding: '12px 24px' }}>
+        <Text bold>입출금 테스트</Text>
+        <TransactionForm />
+      </Flex>
     </Flex>
   )
 }

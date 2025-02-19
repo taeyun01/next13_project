@@ -1,4 +1,4 @@
-import { collection, doc, setDoc, getDoc } from 'firebase/firestore'
+import { collection, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore'
 
 import { COLLECTIONS } from '@/constants/collection'
 import { store } from '@/remote/firebase'
@@ -59,4 +59,14 @@ export const getAccount = async (userId: string) => {
     id: snapshot.id,
     ...(snapshot.data() as Account),
   }
+}
+
+// 유저 계좌 잔액 업데이트
+export const updateAccountBalance = (userId: string, balance: number) => {
+  // 해당 유저id 키값을 가진 유저 계좌 정보 찾기
+  const snapshot = doc(collection(store, COLLECTIONS.ACCOUNT), userId)
+
+  return updateDoc(snapshot, {
+    balance, // 업데이트 하고 싶은 값 (잔액)
+  })
 }
