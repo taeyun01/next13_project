@@ -1,4 +1,8 @@
-import { Transaction, TransactionType } from '@/types/transaction'
+import {
+  Transaction,
+  TransactionFilterType,
+  TransactionType,
+} from '@/types/transaction'
 
 import {
   collection,
@@ -24,24 +28,13 @@ export const createTransaction = async (newTransaction: Transaction) => {
 export const getTransactions = async ({
   pageParam,
   userId,
+  filter = 'all', // 기본 필터는 all
 }: {
   pageParam?: QuerySnapshot<TransactionType>
   userId: string
+  filter?: TransactionFilterType
 }) => {
-  const transactionQuery = !pageParam
-    ? query(
-        collection(store, COLLECTIONS.TRANSACTION),
-        where('userId', '==', userId),
-        orderBy('date', 'desc'), // 날짜 기준 내림차순 정렬 (최신순)
-        limit(15),
-      )
-    : query(
-        collection(store, COLLECTIONS.TRANSACTION),
-        where('userId', '==', userId),
-        orderBy('date', 'desc'),
-        startAfter(pageParam), // 이전 페이지의 마지막 문서를 기준으로 다음 페이지 조회
-        limit(15),
-      )
+  const transactionQuery = generateQuery({ filter, pageParam, userId })
 
   // 거래 내역 조회
   const transactionSnapshot = await getDocs(transactionQuery)
@@ -57,5 +50,38 @@ export const getTransactions = async ({
   return {
     items,
     lastVisible,
+  }
+}
+
+const generateQuery = ({
+  filter,
+  pageParam,
+  userId,
+}: {
+  filter: TransactionFilterType
+  pageParam?: QuerySnapshot<TransactionType>
+  userId: string
+}) => {
+  const baseQuery = query(
+    collection(store, COLLECTIONS.TRANSACTION),
+    where('userId', '==', userId),
+    orderBy('date', 'desc'),
+    limit(15),
+  )
+
+  if (filter !== 'all') {
+    if (!pageParam) {
+      return query(baseQuery, where('type', '==', filter))
+    }
+
+    return query(baseQuery, startAfter(pageParam), where('type', '==', filter))
+  } else {
+    // filter === 'all' 이면
+    // pageParam이 null이면 전체호출
+    if (!pageParam) {
+      return baseQuery
+    }
+
+    return query(baseQuery, startAfter(pageParam))
   }
 }

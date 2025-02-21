@@ -1,4 +1,5 @@
 export type TransactionType = 'deposit' | 'withdraw' // 입금, 출금
+export type TransactionFilterType = 'all' | TransactionType // 필터 : 모든 거래, 입금, 출금
 
 export interface Transaction {
   userId: string
