@@ -57,7 +57,7 @@ const Transactions = () => {
 
       <div style={{ padding: '0 24px' }}>
         <Link href="/account/transactions">
-          <Button full size="medium" weak>
+          <Button full size="medium" weak color="basic">
             자세히 보기
           </Button>
         </Link>
