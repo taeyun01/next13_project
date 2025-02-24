@@ -1,16 +1,38 @@
+import Spacing from '@/components/shared/Spacing'
 import withAuth from '@/hooks/withAuth'
 import dynamic from 'next/dynamic'
 
 const MonthlyChart = dynamic(() => import('@/components/account/MonthlyChart'))
+const CategoryPieChart = dynamic(
+  () => import('@/components/account/CategoryPieChart'),
+)
 const Transactions = dynamic(() => import('@/components/account/Transactions'))
 
 const AccountPage = () => {
   return (
     <div>
       <MonthlyChart chartData={generateMonthlyChartData()} />
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0' }}
+      />
+      <CategoryPieChart chartData={generatePieChartData()} />
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0' }}
+      />
       <Transactions />
     </div>
   )
+}
+
+const generatePieChartData = () => {
+  return ['카페', '미용', '쇼핑', '교통', '기타'].map((label) => ({
+    label,
+    amount: Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000,
+  }))
 }
 
 // 월별 더미데이터 생성
