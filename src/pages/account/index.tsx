@@ -3,6 +3,7 @@ import withAuth from '@/hooks/withAuth'
 import dynamic from 'next/dynamic'
 
 const MonthlyChart = dynamic(() => import('@/components/account/MonthlyChart'))
+const PiggybankRow = dynamic(() => import('@/components/account/PiggybankRow'))
 const CategoryPieChart = dynamic(
   () => import('@/components/account/CategoryPieChart'),
 )
@@ -12,6 +13,12 @@ const AccountPage = () => {
   return (
     <div>
       <MonthlyChart chartData={generateMonthlyChartData()} />
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0' }}
+      />
+      <PiggybankRow />
       <Spacing
         size={8}
         backgroundColor="gray100"

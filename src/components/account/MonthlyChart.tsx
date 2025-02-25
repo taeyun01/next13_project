@@ -138,9 +138,7 @@ const MonthlyChart = ({ chartData, width, height }: MonthlyChartProps) => {
           <div>
             <strong>{formatDate(tooltipData.date)}</strong>
           </div>
-          <div>
-            총 지출: {addDelimiter(tooltipData.balance)}원
-          </div>
+          <div>총 지출: {addDelimiter(tooltipData.balance)}원</div>
         </TooltipInPortal>
       )}
     </div>
