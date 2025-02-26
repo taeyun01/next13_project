@@ -5,9 +5,15 @@ import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
+import Spacing from '@/components/shared/Spacing'
+import ListRow from '@/components/shared/ListRow'
+import { useRouter } from 'next/router'
+import { css } from '@emotion/react'
 
 const MyPage = () => {
   const { data: session } = useSession()
+
+  const navigate = useRouter()
 
   return (
     <div>
@@ -27,6 +33,25 @@ const MyPage = () => {
           <Text bold>{session?.user?.email}</Text>
         </Flex>
       </Flex>
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0' }}
+      />
+
+      <ul>
+        <ListRow
+          style={termsRowStyles}
+          contents={
+            <ListRow.ListRowTexts title="약관" subTitle="약관목록 및 철회" />
+          }
+          withArrow
+          onClick={() => {
+            //TODO : 약관 페이지 이동
+            navigate.push('/settings/terms')
+          }}
+        />
+      </ul>
 
       <FixedBottomButton
         color="error"
@@ -36,5 +61,9 @@ const MyPage = () => {
     </div>
   )
 }
+
+const termsRowStyles = css`
+  cursor: pointer;
+`
 
 export default withAuth(MyPage)
