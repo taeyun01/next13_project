@@ -2,7 +2,13 @@ import Top from '@/components/shared/Top'
 import useUser from '@/hooks/useUser'
 import { getTerms } from '@/remote/account'
 import { User } from '@/types/user'
-import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
+import {
+  dehydrate,
+  QueryClient,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query'
 import { GetServerSidePropsContext } from 'next'
 import { getSession } from 'next-auth/react'
 import { TERMS } from '@/constants/account'
@@ -12,8 +18,11 @@ import Flex from '@/components/shared/Flex'
 import ListRow from '@/components/shared/ListRow'
 import Button from '@/components/shared/Button'
 
+import { updateTerms } from '@/remote/account'
+
 const TermsPage = () => {
   const user = useUser()
+  const client = useQueryClient()
 
   const { data: terms } = useQuery({
     queryKey: ['terms', user?.id],
@@ -21,7 +30,17 @@ const TermsPage = () => {
     enabled: !!user, // 유저가 있을때만 쿼리 실행
   })
 
-  // console.log('terms', terms)
+  const { mutate: updateTermsMutate, isLoading } = useMutation({
+    mutationFn: (termIds: string[]) => updateTerms(user?.id as string, termIds),
+    onSuccess: () => {
+      client.invalidateQueries({
+        queryKey: ['terms', user?.id], // 성공시 캐시 갱신을 하여 약관 목록을 다시 가지고 오도록함
+      })
+    },
+    onError: () => {
+      //TODO
+    },
+  })
 
   // 동의한 약관목록
   const selectedTerms = useMemo(() => {
@@ -39,6 +58,20 @@ const TermsPage = () => {
 
     return { requiredTerms, optionalTerms }
   }, [terms])
+
+  // 약관 철회 함수
+  const handleDisagree = (selectedTermId: string) => {
+    // terms?.termIds = [1,2,3] (1,2,3 모두 동의 상태 인데)
+    // selectedTermId (삭제 되길 원하는 값은 2라고 하면)
+    // [1,2,3].filter((n) => n !== 2) => [1, 3] (1,2,3을 필터링해서 2를 제외한 값만 남김)
+    const updatedTermIds = terms?.termIds.filter(
+      (termId) => selectedTermId !== termId,
+    )
+
+    if (!updatedTermIds) return
+
+    updateTermsMutate(updatedTermIds)
+  }
 
   return (
     <div>
@@ -68,7 +101,15 @@ const TermsPage = () => {
                   subTitle={''}
                 />
               }
-              right={<Button color="error">철회</Button>}
+              right={
+                <Button
+                  color="error"
+                  onClick={() => handleDisagree(term.id)}
+                  disabled={isLoading}
+                >
+                  철회
+                </Button>
+              }
             />
           ))}
         </ul>

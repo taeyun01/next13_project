@@ -70,3 +70,13 @@ export const updateAccountBalance = (userId: string, balance: number) => {
     balance, // 업데이트 하고 싶은 값 (잔액)
   })
 }
+
+// 유저 약관 동의 철회
+// 어떤 유저의 약관을 업데이트 할건지, 어떤 값들을 업데이트 할건지
+export const updateTerms = async (userId: string, termIds: string[]) => {
+  const snapshot = doc(collection(store, COLLECTIONS.TERMS), userId) // 유저 아이디가 같은 문서 찾기
+
+  return updateDoc(snapshot, {
+    termIds, // 업데이트 하고 싶은 값 (약관 아이디)
+  })
+}

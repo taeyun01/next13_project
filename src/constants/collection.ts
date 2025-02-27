@@ -7,6 +7,7 @@ const COLLECTIONS = {
   ACCOUNT: 'ACCOUNT',
   TRANSACTION: 'TRANSACTION',
   PIGGYBANK: 'PIGGYBANK',
+  FAQ: 'FAQ',
 } as const
 
 export { COLLECTIONS }
