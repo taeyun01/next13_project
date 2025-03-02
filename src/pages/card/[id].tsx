@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Flex from '@/components/shared/Flex'
 import Text from '@/components/shared/Text'
 import dynamic from 'next/dynamic'
+import SEO from '@/components/shared/SEO'
 
 // fixed버튼은 window에 접근해서 포탈을 띄우는 건데, 서버사이드 렌더링에서 window에 접근을 할 수 없음. 이때 해결방법
 // 버튼을 dynamic하게 불러와서 ssr을 false로 설정하고 서버사이드 렌더링에서는 버튼의 존재를 모르도록 해서 그리지 않도록함
@@ -45,6 +46,11 @@ const CardDetailPage = ({ initialCard }: CardDetailPageProps) => {
 
   return (
     <div>
+      <SEO
+        title={`${corpName} ${name}`}
+        description={subTitle}
+        image="https://sojoong.joins.com/wp-content/uploads/sites/4/2024/12/01.jpg"
+      />
       <Top title={`${corpName} ${name}`} subtitle={subTitle} />
       <ul>
         {benefit.map((text, idx) => (
