@@ -37,7 +37,7 @@ const CardDetailPage = ({ initialCard }: CardDetailPageProps) => {
     initialData: initialCard, // 최초의 값이 온전하게 넘어오면 호출하지 않음
   })
 
-  console.log(data)
+  // console.log(data)
 
   if (!data) return
 

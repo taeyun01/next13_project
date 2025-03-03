@@ -13,9 +13,9 @@ const getEventBanners = async ({ hasAccount }: { hasAccount: boolean }) => {
 
   const eventBannerSnapshot = await getDocs(eventBannerQuery)
 
-  if (eventBannerSnapshot.docs.length === 1) {
-    throw new Error('에러 테스트')
-  }
+  // if (eventBannerSnapshot.docs.length === 1) {
+  //   throw new Error('에러 테스트')
+  // }
 
   return eventBannerSnapshot.docs.map((doc) => ({
     id: doc.id,

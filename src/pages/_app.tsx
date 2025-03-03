@@ -1,6 +1,7 @@
 import Layout from '@/components/shared/Layout'
 import globalStyles from '@/styles/globalStyles'
 import { Global } from '@emotion/react'
+import { useReportWebVitals } from 'next/web-vitals'
 
 import type { AppProps } from 'next/app'
 
@@ -22,6 +23,9 @@ export default function App({
   pageProps: { dehydratedState, session, ...pageProps },
 }: AppProps) {
   // console.log('_app')
+  useReportWebVitals((metric) => {
+    console.log(metric)
+  })
 
   return (
     <Layout>
