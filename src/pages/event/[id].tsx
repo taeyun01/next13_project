@@ -24,7 +24,7 @@ const EventPage = ({ initialEvent, id }: EventPageProps) => {
     onSuccess: (event) => {
       // 이벤트가 종료되었는지 확인
       const isEventExist = isAfter(new Date(), parseISO(event.endDate))
-      console.log('isEventExist', isEventExist)
+      // console.log('isEventExist', isEventExist)
       if (isEventExist) {
         show?.open({
           title: `'${event.title}' 이벤트가 종료되었어요`,

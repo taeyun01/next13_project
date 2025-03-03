@@ -21,7 +21,7 @@ const useCreditCheck = ({
     refetchInterval: 2_000, // 2초마다 호출
     staleTime: 0, // 데이터가 오래되면 다시 호출
     onSuccess: (status) => {
-      console.log('status:', status)
+      // console.log('status:', status)
       // 'COMPLETE'상태면 조회성공!
       if (status === CHECK_STATUS.COMPLETE) {
         onSuccess(getCreditScore(200, 1000))

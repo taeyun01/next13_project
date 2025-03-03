@@ -21,7 +21,7 @@ const CreditCheckPage = () => {
 
   const { data: status } = useCreditCheck({
     onSuccess: (creditScore) => {
-      console.log('조회성공 나의 신용점수는!?', creditScore + '점')
+      // console.log('조회성공 나의 신용점수는!?', creditScore + '점')
       setReadyToPoll(false)
       mutate(creditScore)
     },
