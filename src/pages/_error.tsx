@@ -21,7 +21,7 @@ const Error = ({ statusCode }: { statusCode?: number }) => {
         <Spacing size={20} />
         <Text>{statusCode} 에러가 발생했습니다.</Text>
         <Spacing size={20} />
-        <Button onClick={() => window.history.back()} color="error">
+        <Button onClick={() => window.history.back()} color="basic">
           돌아가기
         </Button>
       </Flex>

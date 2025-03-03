@@ -13,6 +13,7 @@ import {
 import { SessionProvider } from 'next-auth/react'
 import Navbar from '@/components/shared/Navbar'
 import { AlertContextProvider } from '@/contexts/AlertContext'
+import ErrorBoundary from '@shared/ErrorBoundary'
 
 const queryClient = new QueryClient()
 
@@ -28,10 +29,12 @@ export default function App({
       <SessionProvider session={session}>
         <QueryClientProvider client={queryClient}>
           <Hydrate state={dehydratedState}>
-            <AlertContextProvider>
-              <Navbar />
-              <Component {...pageProps} />
-            </AlertContextProvider>
+            <ErrorBoundary>
+              <AlertContextProvider>
+                <Navbar />
+                <Component {...pageProps} />
+              </AlertContextProvider>
+            </ErrorBoundary>
           </Hydrate>
         </QueryClientProvider>
       </SessionProvider>

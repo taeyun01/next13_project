@@ -11,6 +11,7 @@ import 'swiper/css'
 import Skeleton from '@/components/shared/Skeleton'
 import Image from 'next/image'
 import useAccount from '@/hooks/useAccount'
+import ErrorBoundary from '@/components/shared/ErrorBoundary'
 
 const EventBanners = () => {
   const { data } = useEventBanners()
@@ -56,6 +57,26 @@ const bannerStyles = css`
   border-radius: 8px;
 `
 
+const WrapErrorBoundary = () => {
+  return (
+    // <ErrorBoundary fallbackComponent={<></>}> // 아무것도 그리기 싫을 때
+    <ErrorBoundary fallbackComponent={<BannerErrorFallback />}>
+      <EventBanners />
+    </ErrorBoundary>
+  )
+}
+
+const BannerErrorFallback = () => {
+  return (
+    <div style={{ padding: 24 }}>
+      <Text bold color="red">
+        이벤트 배너에 문제가 생겼어요
+      </Text>
+      <Skeleton width="100%" height={106} style={{ borderRadius: 8 }} />
+    </div>
+  )
+}
+
 export const BannerSkeleton = () => {
   return (
     <div style={{ padding: 24 }}>
@@ -64,6 +85,6 @@ export const BannerSkeleton = () => {
   )
 }
 
-export default withSuspense(EventBanners, {
+export default withSuspense(WrapErrorBoundary, {
   fallback: <BannerSkeleton />,
 })
