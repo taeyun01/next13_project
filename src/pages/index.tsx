@@ -28,8 +28,6 @@ const CardList = dynamic(() => import('@/components/home/CardList'), {
 })
 
 export default function Home() {
-  const { data: session } = useSession() // 유저 세션 가져오기
-
   return (
     <>
       <EventBanners />
