@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Flex from './Flex'
 import Spacing from './Spacing'
 import Text from './Text'
@@ -29,7 +30,7 @@ const FullPageLoader = ({
       align="center"
     >
       <Flex direction="column" align="center">
-        <img width={120} src={imgSrc} alt="loading" />
+        <Image width={120} src={imgSrc} alt="loading" />
         {message && (
           <>
             <Spacing size={spacing} />

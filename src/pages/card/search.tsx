@@ -24,9 +24,11 @@ const SearchPage = () => {
   const [keyword, setKeyword] = useState('')
   const debouncedKeyword = useDebounce(keyword)
   // console.log('debouncedKeyword', debouncedKeyword)
-  const isSearchPage = ['/card/search'].includes(location.pathname) === true
 
   const navigate = useRouter()
+
+  const location = navigate.pathname
+  const isSearchPage = ['/card/search'].includes(location) === true
 
   const inputRef = useRef<HTMLInputElement>(null)
 
