@@ -24,6 +24,7 @@ const SearchPage = () => {
   const [keyword, setKeyword] = useState('')
   const debouncedKeyword = useDebounce(keyword)
   // console.log('debouncedKeyword', debouncedKeyword)
+  const isSearchPage = ['/card/search'].includes(location.pathname) === true
 
   const navigate = useRouter()
 
@@ -41,11 +42,31 @@ const SearchPage = () => {
     setKeyword(e.target.value)
   }, [])
 
+  // useEffect(() => {
+  //   if (inputRef.current) {
+  //     inputRef.current.focus()
+  //   }
+  // }, [])
+
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus()
+    const currentInputRef = inputRef.current
+
+    if (currentInputRef) {
+      currentInputRef.focus()
     }
-  }, [])
+
+    const handleBlur = () => {
+      if (isSearchPage) {
+        window.history.back()
+      }
+    }
+
+    currentInputRef?.addEventListener('blur', handleBlur)
+
+    return () => {
+      currentInputRef?.removeEventListener('blur', handleBlur)
+    }
+  }, [isSearchPage])
 
   return (
     <div>
