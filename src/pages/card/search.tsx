@@ -38,17 +38,9 @@ const SearchPage = () => {
     enabled: debouncedKeyword !== '', // 검색을 입력했을 때만 쿼리 실행
   })
 
-  // console.log(data)
-
   const handleKeyword = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value)
   }, [])
-
-  // useEffect(() => {
-  //   if (inputRef.current) {
-  //     inputRef.current.focus()
-  //   }
-  // }, [])
 
   useEffect(() => {
     const currentInputRef = inputRef.current
