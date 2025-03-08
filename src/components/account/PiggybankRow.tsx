@@ -82,6 +82,7 @@ const PiggybankRow = () => {
           withArrow
           onClick={() => {
             //TODO : 저금통 상세 페이지 이동 or 저금통 리스트 페이지 이동
+            navigate.push('/account/piggybank/detail')
           }}
         />
       </ul>
