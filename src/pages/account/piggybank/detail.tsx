@@ -1,13 +1,21 @@
-import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
-import PiggybankRow from '@/components/account/PiggybankRow'
-const PiggybankDetail = () => {
-  // TODO : 통장 리스트 정렬 및 필터링 구현하기
+import { getPiggybankList } from '@/remote/piggybank'
+import useUser from '@/hooks/useUser'
+import { useQuery } from '@tanstack/react-query'
 
-  /* 
-     1. 해당 유저의 통장 리스트 조회
-     2. 진행중인 통장, 종료된 통장 분리
-  */
+const PiggybankDetail = () => {
+  const user = useUser()
+
+  const { data: piggybankList } = useQuery({
+    queryKey: ['piggybankList', user?.id],
+    queryFn: () => getPiggybankList(user?.id as string),
+    suspense: true,
+  })
+
+  // console.log('user', user?.id)
+
+  console.log('piggybankList', piggybankList)
+
   return (
     <div>
       {/* //TODO : 진행중인 목표 통장 리스트 구현하기 */}
