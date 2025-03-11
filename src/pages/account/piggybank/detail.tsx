@@ -79,7 +79,9 @@ const PiggybankDetail = () => {
                   color="basic"
                   onClick={() => {
                     // TODO: 저금하기 페이지로 이동
-                    navigate.push(`/account/piggybank/detail/${piggybank.id}`)
+                    navigate.push(
+                      `/account/piggybank/piggybanksaving/${piggybank.id}`,
+                    )
                   }}
                 >
                   저금하기
