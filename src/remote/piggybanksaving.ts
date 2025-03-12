@@ -14,4 +14,11 @@ export const getPiggybankSaving = async (docId: string) => {
   return docSnap.data() as Piggybank
 }
 
-// 저금 금액 +
+// 저금 금액 + 업데이트
+export const updatePiggybankSaving = async (docId: string, amount: number) => {
+  const docRef = doc(collection(store, COLLECTIONS.PIGGYBANK), docId)
+  const docSnap = await getDoc(docRef)
+  const currentAmount = docSnap.data()?.balance
+  const newAmount = currentAmount + amount
+  await updateDoc(docRef, { balance: newAmount })
+}
