@@ -4,6 +4,7 @@ import Input from '@/components/shared/Input'
 import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
 import useUser from '@/hooks/useUser'
+import { updateAccountBalance } from '@/remote/account'
 import {
   getPiggybankSaving,
   updatePiggybankSaving,
@@ -51,7 +52,11 @@ const PiggybankSavingPage = () => {
     )
     if (!isConfirmed) return
 
-    await updatePiggybankSaving(params?.id as string, savingAmount)
+    Promise.all([
+      updateAccountBalance(user?.id as string, balance + savingAmount),
+      updatePiggybankSaving(params?.id as string, savingAmount),
+    ])
+
     alert('저금이 완료되었습니다.')
     setSavingAmount(0)
     navigate.push('/account')
