@@ -4,7 +4,7 @@ import Input from '@/components/shared/Input'
 import Text from '@/components/shared/Text'
 import Top from '@/components/shared/Top'
 import useUser from '@/hooks/useUser'
-import { updateAccountBalance } from '@/remote/account'
+import { getAccount, updateSavingAccountBalance } from '@/remote/account'
 import {
   getPiggybankSaving,
   updatePiggybankSaving,
@@ -38,6 +38,12 @@ const PiggybankSavingPage = () => {
     enabled: !!user,
   })
 
+  const { data: myAccount } = useQuery({
+    queryKey: ['account', user?.id],
+    queryFn: () => getAccount(user?.id as string),
+    enabled: !!user,
+  })
+
   const { userId, name, startDate, endDate, balance, goalAmount } =
     piggybankSaving as Piggybank
 
@@ -47,18 +53,23 @@ const PiggybankSavingPage = () => {
       return
     }
 
+    if (myAccount?.balance && myAccount?.balance < savingAmount) {
+      alert('계좌 잔액이 부족합니다.')
+      return
+    }
+
     const isConfirmed = confirm(
       `${addDelimiter(savingAmount)}원을 저금하시겠습니까?`,
     )
     if (!isConfirmed) return
 
-    Promise.all([
-      updateAccountBalance(user?.id as string, balance + savingAmount),
+    await Promise.all([
+      updateSavingAccountBalance(userId as string, savingAmount),
       updatePiggybankSaving(params?.id as string, savingAmount),
     ])
 
-    alert('저금이 완료되었습니다.')
     setSavingAmount(0)
+    alert('저금이 완료되었습니다.')
     navigate.push('/account')
   }
 

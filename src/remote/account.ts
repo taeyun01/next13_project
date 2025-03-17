@@ -80,3 +80,24 @@ export const updateTerms = async (userId: string, termIds: string[]) => {
     termIds, // 업데이트 하고 싶은 값 (약관 아이디)
   })
 }
+
+export const updateSavingAccountBalance = async (
+  userId: string,
+  balance: number,
+) => {
+  // 해당 유저id 키값을 가진 유저 계좌 정보 찾기
+  const snapshot = doc(collection(store, COLLECTIONS.ACCOUNT), userId)
+
+  const currentSnapshot = await getDoc(snapshot)
+
+  if (!currentSnapshot.exists()) {
+    throw new Error('계좌 정보가 존재하지 않습니다.')
+  }
+
+  const currentBalance = currentSnapshot.data().balance
+  const updateAmount = currentBalance - balance
+
+  return updateDoc(snapshot, {
+    balance: updateAmount, // 업데이트 하고 싶은 값 (잔액)
+  })
+}
