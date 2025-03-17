@@ -31,18 +31,33 @@ const PiggybankSavingPage = () => {
 
   const params = useParams()
 
-  const { data: piggybankSaving } = useQuery({
-    queryKey: ['piggybankSaving', params?.id],
-    queryFn: () => getPiggybankSaving(params?.id as string),
-    suspense: true,
-    enabled: !!user,
-  })
+  const { data: piggybankSaving, isLoading: isPiggybankSavingLoading } =
+    useQuery({
+      queryKey: ['piggybankSaving', params?.id],
+      queryFn: () => getPiggybankSaving(params?.id as string),
+      suspense: true,
+      enabled: !!user,
+    })
 
-  const { data: myAccount } = useQuery({
+  const { data: myAccount, isLoading: isMyAccountLoading } = useQuery({
     queryKey: ['account', user?.id],
     queryFn: () => getAccount(user?.id as string),
     enabled: !!user,
   })
+
+  if (isPiggybankSavingLoading || isMyAccountLoading) {
+    return (
+      <Flex justify="center" align="center" style={{ padding: 24 }}>
+        <Text typography="t5" bold>
+          내 통장을 가져오는 중입니다..
+        </Text>
+      </Flex>
+    )
+  }
+
+  if (!piggybankSaving || !myAccount) {
+    return <div>통장이 존재하지 않습니다.</div>
+  }
 
   const { userId, name, startDate, endDate, balance, goalAmount } =
     piggybankSaving as Piggybank
