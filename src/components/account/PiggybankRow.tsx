@@ -26,7 +26,8 @@ const PiggybankRow = () => {
   console.log('piggybank', piggybank)
 
   // 생성한 저금통이 없는 경우
-  if (!piggybank || piggybank.balance === piggybank.goalAmount) {
+  // TODO : 수정하기
+  if (!piggybank) {
     return (
       <div>
         <ul>
